@@ -1,0 +1,11 @@
+Hello World
+
+{% if events %}
+    <div class="card-columns">
+      {% for event in events %}
+        {% include "partials/card.html" %}
+      {% endfor %}
+    </div>
+    {% else %}
+      <div class="alert alert-primary" role="alert">No events to display.</div>
+    {% endif %}
