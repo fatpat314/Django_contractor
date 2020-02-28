@@ -1,4 +1,7 @@
-Hello World
+
+{% extends "base.html" %}
+
+{% block content %}
 
 {% if events %}
     <div class="card-columns">
@@ -9,3 +12,5 @@ Hello World
     {% else %}
       <div class="alert alert-primary" role="alert">No events to display.</div>
     {% endif %}
+
+{% endblock %}

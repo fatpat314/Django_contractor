@@ -1,10 +1,10 @@
 <div class="card mb-3">
-  <h5 class="card-header ">{{ page.title }}</h5>
+  <h5 class="card-header ">{{ event.name }}</h5>
   <div class="card-body border-dark">
     <p class="card-text text-dark">
-      {{ event.event_name|truncatewords_html:30 }}
+      {{ event.name|truncatewords_html:30 }}
       <hr>
-      <div class="text-right"><a href="event_name" title="Read More">Read More</a></div>
+      <div class="text-right"><a href="{% url 'event-details-page' event.slug %}" name="Event Details">Event Details</a></div>
   </div>
 
 </div>
