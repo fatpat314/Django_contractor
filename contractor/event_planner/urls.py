@@ -7,6 +7,8 @@ urlpatterns = [
     path('', EventListView.as_view(), name='event-list'),
     path('form/', New_event_form.as_view(), name='new'),
     path('<str:slug>/', EventDetailView.as_view(), name='event-details-page'),
-    path('<str:slug>/delete/', EventDeleteView.as_view(), name='event-delete-page')
+    path('<str:slug>/edit/', views.EventEditView.as_view(), name='event-edit-page'),
+    path('<str:slug>/delete/', views.EventDeleteView.as_view(), name='event-delete-page')
 
 ]
+# <str:slug>

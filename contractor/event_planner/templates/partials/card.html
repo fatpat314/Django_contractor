@@ -2,7 +2,9 @@
   <h5 class="card-header ">{{ event.name }}</h5>
   <div class="card-body border-dark">
     <p class="card-text text-dark">
-      {{ event.name|truncatewords_html:30 }}
+      {{ event.contact_person|truncatewords_html:30 }}
+      <br>
+      {{ event.event_date|truncatewords_html:30 }}
       <hr>
       <div class="text-right"><a href="{% url 'event-details-page' event.slug %}" name="Event Details">Event Details</a></div>
   </div>

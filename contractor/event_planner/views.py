@@ -44,8 +44,15 @@ class New_event_form(CreateView):
             return HttpResponseRedirect(reverse_lazy('event-details-page', args=[new_event_form.slug]))
         return render(request, 'new-event-form.html', {'form':form})
 
+class EventEditView(UpdateView):
+    model = Event
+    fields = ['name', 'details']
+
+    template_name = 'event_edit.html'
+    success_url = reverse_lazy('event-list')
+
 class EventDeleteView(DeleteView):
 
     model = Event
     template_name = 'event_delete.html'
-    success_url = reverse_lazy('event-list-page')
+    success_url = reverse_lazy('event-list')
