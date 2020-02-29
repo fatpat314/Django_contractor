@@ -5,7 +5,7 @@ from django.views.generic.detail import DetailView
 from event_planner.models import Event
 from event_planner.forms import PageForm
 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
@@ -27,7 +27,7 @@ class EventDetailView(DetailView):
 
     def get(self, request, slug):
         '''Return a specific event page by slug'''
-        event = self.get_queryset().get(slug__iexact=slug)
+        event = self.get_queryset().get(slug__iexact=slug)#Figure out how to name thow events the same name
         return render(request, 'page.html',{
             'event': event
         })
@@ -43,3 +43,9 @@ class New_event_form(CreateView):
             new_event_form = form.save()
             return HttpResponseRedirect(reverse_lazy('event-details-page', args=[new_event_form.slug]))
         return render(request, 'new-event-form.html', {'form':form})
+
+class EventDeleteView(DeleteView):
+
+    model = Event
+    template_name = 'event_delete.html'
+    success_url = reverse_lazy('event-list-page')

@@ -3,9 +3,15 @@
 {% block content %}
   <div class="row">
     <div class="col m-4">
-      <h3>{{ event.slug }} <small class="text-muted">Last updated {{ event.modified|date:"SHORT_DATETIME_FORMAT" }} by <b>{{ event.author.username }}</b></small></h3>
+      <h3>{{ event.slug }} <small class="text-muted">Last updated {{ event.modified|date:"SHORT_DATETIME_FORMAT" }} by <b>{{ event.coordinator.username }}</b></small></h3>
       <hr>
       <p>{{ event.details|linebreaksbr }}</p>
+      <br>
+      <p>{{ event.event_date }}</p>
+      <br>
+      <p>{{ event.event_time }}</p>
+      <br>
+      {# <a class="btn btn-primary" href="{% url 'event-delete-page' course.slug %}"  role="button">Delete</a> #}
       <hr>
       <a href="/">Back to List</a>
     </div>
