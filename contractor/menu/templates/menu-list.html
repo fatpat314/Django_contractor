@@ -1,16 +1,15 @@
-
 {% extends "base.html" %}
 
 {% block content %}
 
 {% if events %}
     <div class="card-columns">
-      {% for event in events %}
+      {% for item in items %}...
         {% include "partials/card.html" %}
       {% endfor %}
     </div>
     {% else %}
-      <div class="alert alert-primary" role="alert">No events to display.</div>
+      <div class="alert alert-primary" role="alert">No TEST to display.</div>
     {% endif %}
 
     <form action="{% url 'search_results' %}" method="get">

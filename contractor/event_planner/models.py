@@ -21,7 +21,7 @@ class Event(models.Model):
     contact_person = models.CharField(max_length=100, blank=False, default='', null=False)
     #type_of_event(dropdown menu of options, brunch, dinner, cocktails, ect...)
     #number_of_guests
-    #location
+    location = models.CharField(max_length=100, blank=False, default='', null=False)
     #deposite confirmed
 
 
