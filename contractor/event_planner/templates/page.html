@@ -18,8 +18,8 @@
       <p>{{ event.details|linebreaksbr }}</p>
       <br>
       <hr>
-      <a class="btn btn-primary" href="{% url 'event-edit-page' event.slug %}"  role="button">Edit</a>
-      <a class="btn btn-primary" href="{% url 'event-delete-page' event.slug %}"  role="button">Delete</a>
+      <a class="btn btn-primary" href="{% url 'event-edit-page' event.id %}"  role="button">Edit</a>
+      <a class="btn btn-primary" href="{% url 'event-delete-page' event.id %}"  role="button">Delete</a>
       <hr>
       <a href="/">Back to List</a>
     </div>

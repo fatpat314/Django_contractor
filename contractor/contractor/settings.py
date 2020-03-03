@@ -25,7 +25,7 @@ SECRET_KEY = '+@u0blhxzvos@_jsu)onacfyu@*@hx141u8e#fmq1@=t_3j#ft'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'contractor-dj-pk.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -134,5 +134,11 @@ DEFAULT_LOGOUT_URL = "/"
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATICFILES_DIRS =[
+#     os.path.join(BASE_DIR, "static")
+# ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 WIKI_PAGE_TITLE_MAX_LENGTH = 600

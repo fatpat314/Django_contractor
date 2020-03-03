@@ -2,18 +2,16 @@
 
 {% block content %}
 
-{% if events %}
+{% if items %}
     <div class="card-columns">
-      {% for item in items %}...
-        {% include "partials/card.html" %}
+      {% for item in items %}
+        {% include "menu/templates/partials/card.html" %}
       {% endfor %}
     </div>
     {% else %}
       <div class="alert alert-primary" role="alert">No TEST to display.</div>
     {% endif %}
 
-    <form action="{% url 'search_results' %}" method="get">
-      <input name="q" type="text" placeholder="Search...">
-    </form>
+
 
 {% endblock %}

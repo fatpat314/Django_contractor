@@ -4,9 +4,9 @@
     <p class="card-text text-dark">
       {{ item.name|truncatewords_html:30 }}
       <br>
-      {{ item.price|truncatewords_html:30 }}
+      {#{{ item.price|truncatewords_html:30 }}#}
       <hr>
-      <div class="text-right"><a href="{% url 'event-details-page' event.slug %}" name="Event Details">Event Details</a></div>
+      <div class="text-right"><a href="{% url 'menu-details-page' item.slug %}" name="Menu Details">Menu Details</a></div>
   </div>
 
 </div>

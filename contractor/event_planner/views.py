@@ -28,12 +28,12 @@ class EventListView(ListView):
 
 
 class EventDetailView(DetailView):
-    """render a specific event based on its slug"""
+    """render a specific event based on its id"""
     model = Event
 
-    def get(self, request, slug):
-        '''Return a specific event page by slug'''
-        event = self.get_queryset().get(slug__iexact=slug)#Figure out how to name thow events the same name
+    def get(self, request, id):
+        '''Return a specific event page by id'''
+        event = self.get_queryset().get(id=id)#Figure out how to name thow events the same name
         return render(request, 'page.html',{
             'event': event
         })
@@ -47,7 +47,7 @@ class New_event_form(CreateView):
         form = PageForm(request.POST)
         if form.is_valid():
             new_event_form = form.save()
-            return HttpResponseRedirect(reverse_lazy('event-details-page', args=[new_event_form.slug]))
+            return HttpResponseRedirect(reverse_lazy('event-details-page', args=[new_event_form.id]))
         return render(request, 'new-event-form.html', {'form':form})
 
 @method_decorator([login_required], name='dispatch')
