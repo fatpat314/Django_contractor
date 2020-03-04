@@ -1,1 +1,1 @@
-web: gunicorn contractor.asgi --log-file -
+web: gunicorn contractor.wsgi --log-file -
