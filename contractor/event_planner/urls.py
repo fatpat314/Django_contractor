@@ -1,7 +1,7 @@
 from django.urls import include, path
 
 from event_planner.views import EventListView, EventDetailView, New_event_form, EventDeleteView, SearchResultsView
-from menu.views import MenuListView #MenuCreateView
+from menu.views import MenuListView, MenuDetailView #MenuCreateView
 from . import views
 # from menu.views import views
 
@@ -16,6 +16,7 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('menu/', MenuListView.as_view(), name='menu-list'),
     # path('new-menu/', MenuCreateView.as_view(), name='new-menu-item')
+    path('<int:id>/menu-details/', MenuDetailView.as_view(), name='menu-detail-page')
 
 
 

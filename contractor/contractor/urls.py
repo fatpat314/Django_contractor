@@ -27,6 +27,6 @@ urlpatterns = [
 
 
     path('accounts/', include('accounts.urls')),
-    path('menu/', include('menu.urls')),
+    path('', include('menu.urls')),
 
 ]

@@ -5,6 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 
 from django.urls import reverse, reverse_lazy
+from django.http import HttpResponse, HttpResponseRedirect
 
 from menu.models import MenuItem
 from menu.forms import PageForm
@@ -18,7 +19,7 @@ class MenuListView(ListView):
     def get(self, request):
         """Get a list of menu Items"""
         items = self.get_queryset().all()
-        return render(request, 'menu-list.html', {
+        return render(request, 'menu/menu-list.html', {
         'items':items
         })
 
@@ -26,10 +27,10 @@ class MenuDetailView(DetailView):
     """ render a specific menu item based on its slug"""
     model = MenuItem
 
-    def get (self, request, slug):
-        items = self.get_queryset().get(slug__iexact=slug)
-        return render(request, 'menu-detail-page.html',{
-        'items':items
+    def get (self, request, id):
+        item = self.get_queryset().get(id=id)
+        return render(request, 'menu/menu-detail-page.html',{
+        'item':item
         })
 
 # class MenuCreateView(CreateView):

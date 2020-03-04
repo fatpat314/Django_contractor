@@ -5,11 +5,11 @@
 {% if items %}
     <div class="card-columns">
       {% for item in items %}
-        {% include "menu/templates/partials/card.html" %}
+        {% include "menu/partials/card.html" %}
       {% endfor %}
     </div>
     {% else %}
-      <div class="alert alert-primary" role="alert">No TEST to display.</div>
+      <div class="alert alert-primary" role="alert">No Items to display.</div>
     {% endif %}
 
 
