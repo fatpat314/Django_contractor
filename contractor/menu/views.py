@@ -33,14 +33,14 @@ class MenuDetailView(DetailView):
         'item':item
         })
 
-# class MenuCreateView(CreateView):
-#     def get(self, request, *args, **kwargs):
-#         context = {'form':PageForm()}
-#         return render(request, 'new-menu-form.html', context)
-#
-#     def post(self, request, *args, **kwargs):
-#         form = PageForm(request.POST)
-#         if form.is_valid():
-#             new-menu-form = form.save()
-#             return HttpResponseRedirect(reverse_lazy('menu-details-page', args=[new-menu-form.id]))
-#         return render(request, 'new-menu-form.html', {'form':form})
+class MenuCreateView(CreateView):
+    def get(self, request, *args, **kwargs):
+        context = {'form':PageForm()}
+        return render(request, 'menu/new-menu-form.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = PageForm(request.POST)
+        if form.is_valid():
+            form = form.save()
+            return HttpResponseRedirect(reverse_lazy('menu-detail-page', args=[form.id]))
+        return render(request, 'menu/new-menu-form.html', {'form':form})

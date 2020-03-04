@@ -5,7 +5,32 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 # Create your models here.
+class Menu(models.Model):
+    name = models.CharField(max_length=24, unique=True, verbose_name='menu name')
+    slug = models.SlugField(max_length=24, unique=True)
+    additional_text = models.CharField(max_length=128, null=True,blank=True)
+    order = models.PositiveSmallIntegerField(default=0)
+
+    # class Meta:
+    #
+    #     ordering = ['is_standard', 'order']
+
+# class MenuCategory(models.Model):
+#     menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
+#     name = models.CharField(max_length=32, verbose_name='menu category name')
+#     additional_text = models.CharField(max_length=128, null=True, blank=True)
+#     # order = models.IntegerField(default=0)
+#     #
+#     # class Meta:
+#     #     verbose_name='menu category'
+#     #     verbose_name_plural='menu catagories'
+#     #     ordering = ['name' 'order']
+#
+#     def __unicode__(self):
+        # return self.name
+
 class MenuItem(models.Model):
     CLASSIFICATION_CHOICES = (
         ('neither', 'Neither'),
@@ -15,9 +40,9 @@ class MenuItem(models.Model):
 
     name = models.CharField(max_length=48, help_text='Name of the item on the menu.')
     description = models.CharField(max_length=128, null=True, blank=True, help_text='Description of a menu item.')
-    # category = models.ManytoManyField(MenuCategory, verbose_name='menu category', help_text='Category is the menu category that this menu item belongs to, i.e. \'Appetizers\'.')
+    # category = models.ManyToManyField(MenuCategory, verbose_name='menu category', help_text='Category is the menu category that this menu item belongs to, i.e. \'Appetizers\'.')
     # order = models.IntergerField(default=0, verbose_name='order', help_text='The order is to specify the order in which items show on the menu')
-    # price = models.IntergerField(help_text='The price in the cost of the item.')
+    price = models.IntegerField(help_text='The price in the cost of the item.')
     # image = models.ImageField(upload_to='menu', null=True, blank=True,verbose_name='image', help_text='The image is an optional field that is associated with each menu item.')
 
     classification = models.CharField(max_length=10, choices=CLASSIFICATION_CHOICES, default=0, verbose_name='classification', help_text='Select if this item classifies as Vegetarian, Vegan, or Neither.')
@@ -25,11 +50,11 @@ class MenuItem(models.Model):
 	# contains_peanuts = models.BooleanField(default=True, verbose_name='contain peanuts?', help_text='Does this item contain peanuts?')
 	# gluten_free = models.BooleanField(default=False, verbose_name='gluten free?', help_text='Is this item Gluten Free?')
 
-    # class Meta:
-    #     verbose_name='menu item'
-    #     verbose_name_plural='menu items'
-    #     # ordering = ['category', 'order', 'name']
-    #     ordering = ['name']
+    class Meta:
+        verbose_name='menu item'
+        verbose_name_plural='menu items'
+        # ordering = ['category', 'order', 'name']
+        # ordering = ['name']
 
     def __str__(self):
         return self.name

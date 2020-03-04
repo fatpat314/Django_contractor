@@ -1,8 +1,12 @@
+
+{% block content %}
 <div class="card mb-3">
   <h5 class="card-header ">{{ item.name }}</h5>
   <div class="card-body border-dark">
     <p class="card-text text-dark">
       {{ item.name|truncatewords_html:30 }}
+      {{ item.description|truncatewords_html:30 }}
+      {{ item.category|truncatewords_html:30 }}
       <br>
 
       <hr>
@@ -10,3 +14,4 @@
   </div>
 
 </div>
+{% endblock %}
