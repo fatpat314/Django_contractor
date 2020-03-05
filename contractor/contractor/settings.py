@@ -139,6 +139,6 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, "static")
 # ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 WIKI_PAGE_TITLE_MAX_LENGTH = 600
