@@ -1,4 +1,5 @@
 django==2.2.7
+pytz==2019.3
 djangorestframework
 gunicorn
 dj-database-url
