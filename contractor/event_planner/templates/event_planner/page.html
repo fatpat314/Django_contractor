@@ -19,7 +19,7 @@
       <br>
       <p> {{ event.number_of_guests|linebreaksbr}}</p>
       <hr>
-      <a class="btn btn-primary" href="{% url 'event-edit-page' event.id %}"  role="button">Edit</a>
+      <a class="btn btn-primary" href="{% url 'event-edit-page' event.slug %}"  role="button">Edit</a>
       <a class="btn btn-primary" href="{% url 'event-delete-page' event.id %}"  role="button">Delete</a>
       <hr>
       <a href="/">Back to List</a>
