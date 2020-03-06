@@ -20,9 +20,10 @@ class Event(models.Model):
     modified = models.DateTimeField(auto_now=True, help_text="The date and time this page was updated. Automatically generated when the model updates.")
     contact_person = models.CharField(max_length=100, blank=False, default='', null=False)
     #type_of_event(dropdown menu of options, brunch, dinner, cocktails, ect...)
-    #number_of_guests
+
     location = models.CharField(max_length=100, blank=False, default='', null=False)
     #deposite confirmed
+    number_of_guests = models.IntegerField(help_text='The number of guests.')
 
 
     def __str__(self):

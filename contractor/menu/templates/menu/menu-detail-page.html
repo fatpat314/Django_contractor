@@ -2,11 +2,22 @@
 {% block content %}
   <div class="row">
     <div class="col m-4">
+        Name
       <h3>{{ item.name }} </h3>
+      <br>
+      Description
+      <h3>{{ item.description }}</h3>
+      <br>
+      Price
+      <h3>{{ item.price }}</h3>
+      <br>
       
 
 
+
       <hr>
+      <a class="btn btn-primary" href="{% url 'menu-edit-page' item.id %}"  role="button">Edit</a>
+      <a class="btn btn-primary" href="{% url 'menu-delete-page' item.id %}"  role="button">Delete</a>
       <a href="/">Back to List</a>
     </div>
   </div>

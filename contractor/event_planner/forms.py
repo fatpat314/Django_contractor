@@ -6,4 +6,4 @@ class PageForm(forms.ModelForm):
     """ Render and process a form based on the Page model. """
     class Meta():
         model = Event
-        fields = ['name', 'contact_person', 'coordinator', 'details', 'event_date', 'event_time', 'location']
+        fields = ['name', 'contact_person', 'coordinator', 'details', 'event_date', 'event_time', 'location', 'number_of_guests']

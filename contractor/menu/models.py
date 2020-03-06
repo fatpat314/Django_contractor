@@ -7,29 +7,29 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Menu(models.Model):
-    name = models.CharField(max_length=24, unique=True, verbose_name='menu name')
-    slug = models.SlugField(max_length=24, unique=True)
-    additional_text = models.CharField(max_length=128, null=True,blank=True)
-    order = models.PositiveSmallIntegerField(default=0)
-
-    # class Meta:
-    #
-    #     ordering = ['is_standard', 'order']
+# class Menu(models.Model):
+#     name = models.CharField(max_length=24, unique=True, verbose_name='menu name')
+#     slug = models.SlugField(max_length=24, unique=True)
+#     additional_text = models.CharField(max_length=128, null=True,blank=True)
+#     order = models.PositiveSmallIntegerField(default=0)
+#
+#     class Meta:
+#
+#         ordering = ['order']
 
 # class MenuCategory(models.Model):
 #     menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
 #     name = models.CharField(max_length=32, verbose_name='menu category name')
 #     additional_text = models.CharField(max_length=128, null=True, blank=True)
-#     # order = models.IntegerField(default=0)
-#     #
-#     # class Meta:
-#     #     verbose_name='menu category'
-#     #     verbose_name_plural='menu catagories'
-#     #     ordering = ['name' 'order']
+#     order = models.IntegerField(default=0)
 #
-#     def __unicode__(self):
-        # return self.name
+#     class Meta:
+#         verbose_name='menu category'
+#         verbose_name_plural='menu catagories'
+#         ordering = ['name', 'order']
+
+    # def __unicode__(self):
+    #     return self.name
 
 class MenuItem(models.Model):
     CLASSIFICATION_CHOICES = (
@@ -43,6 +43,7 @@ class MenuItem(models.Model):
     # category = models.ManyToManyField(MenuCategory, verbose_name='menu category', help_text='Category is the menu category that this menu item belongs to, i.e. \'Appetizers\'.')
     # order = models.IntergerField(default=0, verbose_name='order', help_text='The order is to specify the order in which items show on the menu')
     price = models.IntegerField(help_text='The price in the cost of the item.')
+
     # image = models.ImageField(upload_to='menu', null=True, blank=True,verbose_name='image', help_text='The image is an optional field that is associated with each menu item.')
 
     classification = models.CharField(max_length=10, choices=CLASSIFICATION_CHOICES, default=0, verbose_name='classification', help_text='Select if this item classifies as Vegetarian, Vegan, or Neither.')

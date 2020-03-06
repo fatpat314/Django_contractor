@@ -7,6 +7,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
 from menu.models import MenuItem
 from menu.forms import PageForm
 
@@ -44,3 +47,18 @@ class MenuCreateView(CreateView):
             form = form.save()
             return HttpResponseRedirect(reverse_lazy('menu-detail-page', args=[form.id]))
         return render(request, 'menu/new-menu-form.html', {'form':form})
+
+@method_decorator([login_required], name='dispatch')
+class MenuEditView(UpdateView):
+    model = MenuItem
+    fields = ['name', 'description', 'price']
+
+    template_name = 'menu/menu_edit.html'
+    success_url = reverse_lazy('menu-list')
+
+@method_decorator([login_required], name='dispatch')
+class MenuDeleteView(DeleteView):
+
+    model = MenuItem
+    template_name = 'menu/menu-delete.html'
+    success_url = reverse_lazy('menu-list')

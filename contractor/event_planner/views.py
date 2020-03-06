@@ -53,7 +53,7 @@ class New_event_form(CreateView):
 @method_decorator([login_required], name='dispatch')
 class EventEditView(UpdateView):
     model = Event
-    fields = ['name', 'details', 'event_date', 'event_time', 'location']
+    fields = ['name', 'details', 'event_date', 'event_time', 'location', 'number_of_guests']
 
     template_name = 'event_planner/event_edit.html'
     success_url = reverse_lazy('event-list')
