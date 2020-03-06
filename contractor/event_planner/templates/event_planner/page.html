@@ -17,6 +17,7 @@
       <h6>Event Details</h6>
       <p>{{ event.details|linebreaksbr }}</p>
       <br>
+      <h6>Number of Guests</h6>
       <p> {{ event.number_of_guests|linebreaksbr}}</p>
       <hr>
       <a class="btn btn-primary" href="{% url 'event-edit-page' event.slug %}"  role="button">Edit</a>
