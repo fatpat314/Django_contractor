@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
+import requests
+
 from event_planner.models import Event
 from event_planner.forms import PageForm
 
@@ -68,12 +70,9 @@ class EventDeleteView(DeleteView):
 
 class SearchResultsView(ListView):
     model = Event
-    template_name = 'search_results.html'
+    template_name = 'event_planner/search_results.html'
 
-    def get_queryset(self):
+    def get(self, request):
         query = self.request.GET.get('q')
-        object_list = Event.objects.filter(
-
-            Q(slug__icontains=query) | Q(event_date__icontains=query)
-        )
-        return object_list
+        results = Event.objects.filter(Q(name__icontains=query))
+        return render(request, 'event_planner/search_results.html', {'results': results})

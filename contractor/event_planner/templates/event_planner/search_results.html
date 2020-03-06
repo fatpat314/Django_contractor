@@ -5,10 +5,10 @@
 <h1>Search Results</h1>
 
 <ul>
-  {% for event in object_list %}
+  {% for event in results %}
     <li>
-      {{ event.slug }}
-      {{ event.event_date }}
+      {{ event }}
+      
     </li>
   {% endfor %}
 </ul>

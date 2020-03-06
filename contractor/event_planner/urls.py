@@ -8,13 +8,13 @@ from . import views
 
 
 urlpatterns = [
-    path('search/', SearchResultsView.as_view(), name='search_results'),
+    # path('search/', SearchResultsView.as_view(), name='search_results'),
     path('', EventListView.as_view(), name='event-list'),
     path('form/', New_event_form.as_view(), name='new'),
     path('<int:id>/', EventDetailView.as_view(), name='event-details-page'),
     path('<str:slug>/edit/', views.EventEditView.as_view(), name='event-edit-page'),
-    path('<int:id>/delete/', views.EventDeleteView.as_view(), name='event-delete-page'),
-    # path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('<int:pk>/delete/', views.EventDeleteView.as_view(), name='event-delete-page'),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
     path('menu/', MenuListView.as_view(), name='menu-list'),
     path('new-menu/', MenuCreateView.as_view(), name='new-menu-item'),
     path('<int:id>/menu-details/', MenuDetailView.as_view(), name='menu-detail-page'),
