@@ -2,7 +2,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<form action="{% url 'search_results' %}" method="get">
+  <input name="q" type="text" placeholder="Search Events">
+</form>
+<br>
 {% if events %}
     <div class="card-columns">
       {% for event in events %}
@@ -13,8 +16,6 @@
       <div class="alert alert-primary" role="alert">No events to display.</div>
     {% endif %}
 
-    <form action="{% url 'search_results' %}" method="get">
-      <input name="q" type="text" placeholder="Search...">
-    </form>
+
 
 {% endblock %}

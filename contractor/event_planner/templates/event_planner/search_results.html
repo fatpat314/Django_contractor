@@ -7,8 +7,8 @@
 <ul>
   {% for event in results %}
     <li>
-      {{ event }}
       
+      <a href="{% url 'event-details-page' event.id %}" name="Event Details">{{ event }}</a>
     </li>
   {% endfor %}
 </ul>

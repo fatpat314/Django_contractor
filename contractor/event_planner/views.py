@@ -74,5 +74,5 @@ class SearchResultsView(ListView):
 
     def get(self, request):
         query = self.request.GET.get('q')
-        results = Event.objects.filter(Q(name__icontains=query))
+        results = Event.objects.filter(Q(name__icontains=query) | Q(event_date__icontains=query))
         return render(request, 'event_planner/search_results.html', {'results': results})
