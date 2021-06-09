@@ -1,4 +1,4 @@
-django==2.2.7
+django==2.2.22
 pytz==2019.3
 djangorestframework
 gunicorn
